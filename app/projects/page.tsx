@@ -20,9 +20,9 @@ export default async function ProjectsPage() {
     return acc;
   }, {} as Record<string, number>);
 
-  const featured = allProjects.find((project) => project.slug === "unkey")!;
-  const top2 = allProjects.find((project) => project.slug === "planetfall")!;
-  const top3 = allProjects.find((project) => project.slug === "highstorm")!;
+  const featured = allProjects.find((project) => project.slug === "saphir")!;
+  const top2 = allProjects.find((project) => project.slug === "peak")!;
+  const top3 = allProjects.find((project) => project.slug === "streamz")!;
   const sorted = allProjects
     .filter((p) => p.published)
     .filter(
@@ -46,7 +46,7 @@ export default async function ProjectsPage() {
             Projekte
           </h2>
           <p className="mt-4 text-zinc-400">
-            Some of the projects are from work and some are on my own time.
+          Hier sind meine derzeitigen Hauptprojekte. 
           </p>
         </div>
         <div className="w-full h-px bg-zinc-800" />
@@ -86,7 +86,7 @@ export default async function ProjectsPage() {
                 </p>
                 <div className="absolute bottom-4 md:bottom-8">
                   <p className="hidden text-zinc-200 hover:text-zinc-50 lg:block">
-                    Read more <span aria-hidden="true">&rarr;</span>
+                 Mehr erfahren <span aria-hidden="true">&rarr;</span>
                   </p>
                 </div>
               </article>
