@@ -11,8 +11,8 @@ export const metadata: Metadata = {
   },
   description: "Portfolio",
   openGraph: {
-    title: "sandro-gantze.com",
-    siteName: "sandro-gantze.com",
+    title: "Sandro Gantze",
+    siteName: "Sandro Gantze",
     locale: "de-Eu",
     type: "website",
   },
