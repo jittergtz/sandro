@@ -4,25 +4,16 @@ import { allProjects } from "contentlayer/generated";
 import { Navigation } from "../components/nav";
 import { Card } from "../components/card";
 import { Article } from "./article";
-import { Redis } from "@upstash/redis";
-import { Eye } from "lucide-react";
+import Image from "next/image";
 
-const redis = Redis.fromEnv();
 
 export const revalidate = 60;
 export default async function ProjectsPage() {
-  const views = (
-    await redis.mget<number[]>(
-      ...allProjects.map((p) => ["pageviews", "projects", p.slug].join(":")),
-    )
-  ).reduce((acc, v, i) => {
-    acc[allProjects[i].slug] = v ?? 0;
-    return acc;
-  }, {} as Record<string, number>);
+ 
 
-  const featured = allProjects.find((project) => project.slug === "saphir")!;
-  const top2 = allProjects.find((project) => project.slug === "peak")!;
-  const top3 = allProjects.find((project) => project.slug === "streamz")!;
+  const featured = allProjects.find((project) => project.slug === "volume")!;
+  const top2 = allProjects.find((project) => project.slug === "saphir")!;
+  const top3 = allProjects.find((project) => project.slug === "peak")!;
   const sorted = allProjects
     .filter((p) => p.published)
     .filter(
@@ -40,13 +31,13 @@ export default async function ProjectsPage() {
   return (
     <div className="relative pb-16">
       <Navigation />
-      <div className="px-6 pt-20 mx-auto space-y-8 max-w-7xl lg:px-8 md:space-y-16 md:pt-24 lg:pt-32">
+      <div className="px-6 pt-20 mx-auto space-y-8 max-w-7xl lg:px-8 md:space-y-16 md:pt-24 lg:pt-32 ">
         <div className="max-w-2xl mx-auto lg:mx-0">
           <h2 className="text-3xl  tracking-tight text-zinc-100 sm:text-4xl">
             Projekte
           </h2>
           <p className="mt-4 text-zinc-400">
-          Hier sind meine derzeitigen Hauptprojekte. 
+          Meine derzeitigen Hauptprojekte. 
           </p>
         </div>
         <div className="w-full h-px bg-zinc-800" />
@@ -54,9 +45,9 @@ export default async function ProjectsPage() {
         <div className="grid grid-cols-1 gap-8 mx-auto lg:grid-cols-2 ">
           <Card>
             <Link href={`/projects/${featured.slug}`}>
-              <article className="relative w-full h-full p-4 md:p-8">
+              <article className="relative w-full h-full p-4 md:p-6">
                 <div className="flex items-center justify-between gap-2">
-                  <div className="text-xs text-zinc-100">
+                  <div className="text-xs text-zinc-100 mb-5">
                     {featured.date ? (
                       <time dateTime={new Date(featured.date).toISOString()}>
                         {Intl.DateTimeFormat(undefined, {
@@ -67,28 +58,25 @@ export default async function ProjectsPage() {
                       <span>SOON</span>
                     )}
                   </div>
-                  <span className="flex items-center gap-1 text-xs text-zinc-500">
-                    <Eye className="w-4 h-4" />{" "}
-                    {Intl.NumberFormat("en-US", { notation: "compact" }).format(
-                      views[featured.slug] ?? 0,
-                    )}
-                  </span>
                 </div>
+
+                <Image
+                alt="project cover"
+                src={"/peak-prev-1.png"}
+                className="object-cover rounded-xl z-0 w-full"
+                width={1080}
+                height={640}
+                />
 
                 <h2
                   id="featured-post"
-                  className="mt-4 text-3xl  text-zinc-100 group-hover:text-white sm:text-4xl font-display"
+                  className="mt-4 text-2xl  text-zinc-400 group-hover:text-zinc-300 sm:text-3xl font-display"
                 >
                   {featured.title}
                 </h2>
                 <p className="mt-4 leading-8 duration-150 text-zinc-400 group-hover:text-zinc-300">
                   {featured.description}
                 </p>
-                <div className="absolute bottom-4 md:bottom-8">
-                  <p className="hidden text-zinc-200 hover:text-zinc-50 lg:block">
-                 Mehr erfahren <span aria-hidden="true">&rarr;</span>
-                  </p>
-                </div>
               </article>
             </Link>
           </Card>
@@ -96,7 +84,18 @@ export default async function ProjectsPage() {
           <div className="flex flex-col w-full gap-8 mx-auto border-t border-gray-900/10 lg:mx-0 lg:border-t-0 ">
             {[top2, top3].map((project) => (
               <Card key={project.slug}>
-                <Article project={project} views={views[project.slug] ?? 0} />
+             <div className="flex">
+                <Image
+                alt="project cover"
+                src={"/peak-prev-1.png"}
+                className=" overflow-hidden object-cover  bottom-40 rounded-xl z-0 w-full "
+                width={1080}
+                height={400}
+                />
+            
+
+                <Article project={project}  />
+                </div>
               </Card>
             ))}
           </div>
@@ -109,7 +108,7 @@ export default async function ProjectsPage() {
               .filter((_, i) => i % 3 === 0)
               .map((project) => (
                 <Card key={project.slug}>
-                  <Article project={project} views={views[project.slug] ?? 0} />
+                  <Article project={project}  />
                 </Card>
               ))}
           </div>
@@ -118,7 +117,7 @@ export default async function ProjectsPage() {
               .filter((_, i) => i % 3 === 1)
               .map((project) => (
                 <Card key={project.slug}>
-                  <Article project={project} views={views[project.slug] ?? 0} />
+                  <Article project={project}  />
                 </Card>
               ))}
           </div>
@@ -127,7 +126,7 @@ export default async function ProjectsPage() {
               .filter((_, i) => i % 3 === 2)
               .map((project) => (
                 <Card key={project.slug}>
-                  <Article project={project} views={views[project.slug] ?? 0} />
+                  <Article project={project}  />
                 </Card>
               ))}
           </div>

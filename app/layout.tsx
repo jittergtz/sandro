@@ -6,7 +6,7 @@ import { Analytics } from "./components/analytics";
 
 export const metadata: Metadata = {
   title: {
-    default: "sandro-gantze.com",
+    default: "sandro-gantze.me",
     template: "%s",
   },
   description: "Portfolio",

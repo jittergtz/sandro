@@ -13,7 +13,7 @@ type Props = {
 
 	views: number;
 };
-export const Header: React.FC<Props> = ({ project, views }) => {
+export const Header: React.FC<Props> = ({ project }) => {
 	const ref = useRef<HTMLElement>(null);
 	const [isIntersecting, setIntersecting] = useState(true);
 
@@ -63,9 +63,7 @@ export const Header: React.FC<Props> = ({ project, views }) => {
 							} `}
 						>
 							<Eye className="w-5 h-5" />{" "}
-							{Intl.NumberFormat("en-US", { notation: "compact" }).format(
-								views,
-							)}
+						
 						</span>
 					
 						<Link target="_blank" href="https://github.com/jittergtz">
