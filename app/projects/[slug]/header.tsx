@@ -11,7 +11,6 @@ type Props = {
 		repository?: string;
 	};
 
-	views: number;
 };
 export const Header: React.FC<Props> = ({ project }) => {
 	const ref = useRef<HTMLElement>(null);
