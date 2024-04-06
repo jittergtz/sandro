@@ -6,6 +6,8 @@ import { Card } from "../components/card";
 import { Article } from "./article";
 import Image from "next/image";
 
+import { WiStars } from "react-icons/wi";
+
 
 export const revalidate = 60;
 export default async function ProjectsPage() {
@@ -42,13 +44,14 @@ export default async function ProjectsPage() {
         </div>
         <div className="w-full h-px bg-zinc-800" />
 
-        <div className="grid grid-cols-1 gap-8 mx-auto lg:grid-cols-2 ">
+        <div className="grid grid-cols-1 border gap-8 mx-auto lg:grid-cols-2 ">
           <Card>
             <Link href={`/projects/${featured.slug}`}>
               <article className="relative w-full h-full p-4 md:p-6">
-                <div className="flex items-center justify-between gap-2">
-                  <div className="text-xs text-zinc-100 mb-5">
-                    {featured.date ? (
+                <div className="flex  items-center justify-between gap-2">
+                  <div className="text-xs flex w-full  justify-between text-zinc-100 mb-5">
+
+                     {featured.date ? (
                       <time dateTime={new Date(featured.date).toISOString()}>
                         {Intl.DateTimeFormat(undefined, {
                           dateStyle: "medium",
@@ -57,6 +60,8 @@ export default async function ProjectsPage() {
                     ) : (
                       <span>SOON</span>
                     )}
+                   <span className="flex gap-1 items-start"> <WiStars size={20} /> Main </span>
+                        
                   </div>
                 </div>
 
@@ -84,7 +89,7 @@ export default async function ProjectsPage() {
           <div className="flex flex-col w-full gap-8 mx-auto border-t border-gray-900/10 lg:mx-0 lg:border-t-0 ">
             {[top2, top3].map((project) => (
               <Card key={project.slug}>
-             <div className="flex">
+             <div className="flex flex-col  md:flex-row">
                 <Image
                 alt="project cover"
                 src={"/peak-prev-1.png"}
