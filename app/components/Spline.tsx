@@ -1,6 +1,7 @@
 import React from 'react'
-import Spline from '@splinetool/react-spline';
 
+
+import Spline from '@splinetool/react-spline';
 
 
 function Splinescene() {
