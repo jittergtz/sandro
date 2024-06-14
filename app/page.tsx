@@ -2,8 +2,7 @@ import Link from "next/link";
 import React from "react";
 import Particles from "./components/particles";
 import Galaxy from "./components/galaxy";
-import Spline from "./components/Spline";
-import Splinescene from "./components/Spline";
+
 import { Lato, Playfair_Display, Lora } from "@next/font/google";
 
 
@@ -22,7 +21,7 @@ const lato = Lora({
 export default function Home() {
   return (
     <div className="flex relative flex-col items-center justify-center w-screen h-screen overflow-hidden bg-[#0f0f0f] ">
-      <Splinescene/>
+   
       <nav className="my-16 animate-fade-in">
         <ul className="flex items-center justify-center gap-4">
           {navigation.map((item) => (
