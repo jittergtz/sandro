@@ -48,11 +48,7 @@ export default function Home() {
 
       <div className="hidden w-screen h-px animate-glow md:block animate-fade-right bg-gradient-to-r from-zinc-100 to-zinc-300" />
       <div className="my-16 text-center animate-fade-in">
-        <h2 className="text-sm md:text-lg text-transparent bg-clip-text bg-gradient-to-bl from-neutral-50 to-neutral-100 px-12 md:px-0 md:w-[30rem]">
-        Ich bin Web developer mit interesse 
-        an jeglichen Technologien. Ein besonderer Fokus 
-        liegt bei mir auf Frontend-Entwicklung und Design.
-        </h2>
+       
       </div>
     </div>
   );
